@@ -18,10 +18,6 @@ class InstallCmd(install):
         import js2py
         js2py.translate_file('bundled.js', 'mfmjs.py')
 
-        try:
-            os.mkdir('mfmpy')
-        except FileExistsError:
-            pass
         os.rename('mfmjs.py', 'mfmpy/mfmjs.py')
 
         install.run(self)
@@ -35,7 +31,10 @@ class InstallCmd(install):
             exit(1)
         
 
-
+try:
+    os.mkdir('mfmpy')
+except FileExistsError:
+    pass
 
 setup(
     name="mfm.py",
