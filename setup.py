@@ -13,7 +13,6 @@ class InstallCmd(install):
         # Build mfm.js
         self._run_cmd(['npm', 'install'])
         self._run_cmd(['npm', 'run', 'build'])
-        shutil.copyfile('loader.js', 'built/loader.js')
 
         import js2py
         js2py.translate_file('bundled.js', 'mfmjs.py')
